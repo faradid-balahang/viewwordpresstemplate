@@ -23,9 +23,9 @@ get_header('custome'); ?>
     $siteTitle  = get_the_title();
     $fargs = array(
         'taxonomy' => 'product_cat',
-        'orderby' => 'name',
-        'order' => 'ASC',
-        'hide_empty' => false
+        // 'orderby' => 'name',
+        // 'order' => 'ASC',
+        'hide_empty' => true
     );
     $categorizes = get_categories($fargs);
     foreach( get_categories($fargs) as $category ){
@@ -49,6 +49,9 @@ get_header('custome'); ?>
         $args = array(
             'post_type' => 'product',
             'product_cat_id'=>$product_cat_id,
+            'orderby'   => 'meta_value_num',
+            'meta_key'  => '_price',
+            'order' => 'asc',
             'posts_per_page' => -1,
             'tax_query'             => array(
                 array(
@@ -70,12 +73,12 @@ get_header('custome'); ?>
                     <div class=\"col-12 col-md-6 mb-3\">
                                 <div class=\"card main-page-foodcard\">
                                     <div class=\"row\">
-                                        <div class=\"col-12 col-md-3\">
+                                        <div class=\"col-6 col-md-3 mb-p-0\">
                                             <div class=\"card-img rounded\">
                                                 <img src=\"" . get_the_post_thumbnail_url() . "\" alt=\"" . get_the_title() . "\">
                                             </div>
                                         </div>
-                                        <div class=\"col-12 col-md-9\">
+                                        <div class=\"col-6 col-md-9 mb-p-0\">
                                             <div class=\"product-content-container\">
                                                 <section class=\"topcontent\">
                                                     <h3>".
@@ -87,7 +90,7 @@ get_header('custome'); ?>
                                                 </section>
                                                 <section class=\"product-price\">
                                                     <p class=\"price-container\">
-                                                        {$Thosendtoman} تومان
+                                                        {$Thosendtoman}<br/> تومان
                                                     </p>
                                                   
                                                 </section>
@@ -134,5 +137,8 @@ get_header('custome'); ?>
 
 </div>
 </main>
+<footer class="site-info text-center p-0 main-page-footer">
+    <a href="https://faradidparham.com/" target="_blank" id="siteInfo" class="text-center text-white font-1">طراحی و توسعه شرکت فرادید پرهام</a>
+</footer>
 <?php
 get_footer('custome');

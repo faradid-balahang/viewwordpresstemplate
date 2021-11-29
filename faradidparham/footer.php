@@ -45,6 +45,7 @@
     <script src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/themes/faradidparham/assets/js/mdb.min.js"></script>
     <script src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/themes/faradidparham/assets/js/all.min.js"></script>
     <script src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/themes/faradidparham/assets/js/custome.js"></script>
+    <script src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/themes/faradidparham/assets/js/mahallo.js" id="mahallo"></script>
 
 </body>
 </html>

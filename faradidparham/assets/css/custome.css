@@ -9,7 +9,12 @@
     --third-txt-color:#ffffff;
     --border-radius: 9px;
 }
-
+.rtl{
+    direction: rtl!important;
+}
+.ltr{
+    direction: ltr!important;
+}
     /* ---------------------------------------------------------------- 
     |
     |
@@ -133,9 +138,20 @@
     |
     |
     -------------------------------------------------------------------*/
+    a:not(.sidenav-link):not(.btn):not(.dropdown-item):not(.nav-link):not(.navbar-brand):not(.page-link):not(.carousel-control-next):not(.carousel-control-prev){
+        color: var(--sec-txt-color)!important;
+    }
+ header#masthead{
+    background: var(--darkest-bg);
+    background-size: cover;
+ }  
+ header{
+    z-index: 3;
+}
     header ul{
         list-style: none;
         display: flex;
+        margin: 0;
     }
     header ul li{
        padding: 0.5rem 1rem;
@@ -143,13 +159,63 @@
     .secondary-navigation{
         margin: 0!important;
     }
- 
-
-    a:not(.sidenav-link):not(.btn):not(.dropdown-item):not(.nav-link):not(.navbar-brand):not(.page-link):not(.carousel-control-next):not(.carousel-control-prev){
-        color: var(--sec-txt-colo)!important;
+    .superheader{
+        border-bottom: 1px solid gray;
+        position: relative;
+        min-height: 5.5rem;
+        background: var(--darkest-bg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
-    #menu ul li img {
+    .superheader h1{
+        width: 50%;
+        height: 6rem;
+        padding: 7px 6px;
+        font-size: 1.2rem;
+        margin-top: 0;
+        margin-bottom: 0;
+        white-space: nowrap;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background: url(http://cafezeitoon.ir/wp-content/themes/faradidparham/assets/images/logo.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        color: transparent;
+    }
+    .superheader h1 a{
+        color: transparent;
+    }
+    .superheader h1 a:not(.sidenav-link):not(.btn):not(.dropdown-item):not(.nav-link):not(.navbar-brand):not(.page-link):not(.carousel-control-next):not(.carousel-control-prev){
+        color: transparent !important;
+    }
+  
+    #menu{
+        width: 100%;
+        margin: auto;
+        padding: 0rem;
+    } 
+    #menu ul{
+        list-style: none !important;
+        display: flex;
+        margin: 0;
+    }
+    
+    #menu ul li{
+        padding: 1rem;
+    
+    }
+    #menu ul li a{
+        color:var(--sec-txt-color) !important;
+    }
+    #menu ul li img{
         width: 1.5rem;
+    }
+    #cat-icon ul{
+        list-style: none;
+        margin: 0;
     }
     a:focus, button:focus, .button.alt:focus, input:focus, textarea:focus, input[type="button"]:focus, input[type="reset"]:focus, input[type="submit"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="search"]:focus {
         outline-color: transparent!important;
@@ -184,9 +250,17 @@
     #mobileMenuContainer ul{
         list-style: none;
     }
+    #mobileMenuContainer ul li{
+        line-height: 1.2rem;
+        padding: 0.5rem 0.5rem;
+    }
     #mobileMenuContainer ul li a{
         color: var(--sec-bg-color);
         line-height: 2.5rem;
+    }
+
+    #mobileMenuContainer img{
+        width: 2rem;
     }
 footer:not(.wp-block-latest-comments__comment-meta){
     background-image: url("http://cafezeitoon.ir/wp-content/themes/faradidparham/assets/images/footer.png");
@@ -222,7 +296,7 @@ footer .site-info{
     color:var(--sec-txt-color)!important;
 }
 .footer-widgets>div:nth-child(2){
-    text-align: left;
+    text-align: right;
 }
 footer p{
     margin: 0 !important;
@@ -230,8 +304,51 @@ footer p{
 footer .widget{
     margin: 0 !important;
 }
+.text-justify{
+    text-align: justify;
+}
+.my-custome-footer{
+    margin-top: 12rem!important;
+    border-top:1px dotted var(--third-txt-color) ;
+    padding:3rem 1rem;
+}
+.woocommerce-active .site-branding {
+    float: left!important;
+    background: url("http://cafezeitoon.ir/wp-content/themes/faradidparham/assets/images/logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    color: var(--base-txt-color);
+}
+.site-branding .site-title a{
+    color: var(--base-txt-color);
+}
+#masthead{
+	background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0;
+}
+.site-branding .site-title {
+    font-size: 2em;
+    letter-spacing: -1px;
+    margin: 0;
+}
 @media (min-width:768px) {
 
+.right-sidebar .widget-area {
+    border-right: 1px solid #cccccc;
+    padding: 0 2rem;
+    background-image: url("http://cafezeitoon.ir/wp-content/themes/faradidparham/assets/images/sidebar.jpg");
+    background-repeat: repeat-y;
+}
+
+ header#masthead{
+    background: url("http://cafezeitoon.ir/wp-content/uploads/2021/11/pages-header-2.jpg");
+    background-size: cover;
+    min-height: 10rem;
+ }
+ .site-header {
+    border-bottom-color: transparent !important;
+}
 .my-custome-footer{
     margin-top: 12rem!important;
     border-top:1px dotted var(--third-txt-color) ;
@@ -240,5 +357,36 @@ footer .widget{
 
 footer .widget.widget_block{
     padding:0 1rem;
+}
+.page-template-template-fullwidth-php .woocommerce-MyAccount-navigation {
+    width: 21.7391304348%;
+    float: right!important;
+    margin-left: 0;
+}
+.page-template-template-fullwidth-php .woocommerce-MyAccount-content {
+    width: 73.9130434783%;
+    float: right;
+    margin-right: 4.347826087%;
+    margin-left: 0!important;
+}
+.footer-widgets>div:nth-child(2){
+    text-align: left;
+}
+.woocommerce-active .site-branding {
+    float: right!important;
+}
+
+.site {
+    overflow: visible!important;
+}
+.elementor-widget-text-editor {
+    color: #7a7a7a !important;
+    font-family: iransance !important;
+    font-weight: 100 !important;
+}
+#masthead{
+	background-repeat: no-repeat;
+    background-size: cover;
+    padding: 1rem 2rem;
 }
 }

@@ -19,25 +19,10 @@
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 <link rel="stylesheet" href="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/themes/faradidparham/assets/css/custome.css">
-<style>
-.site {
-    overflow: visible!important;
-}
-.elementor-widget-text-editor {
-    color: #7a7a7a !important;
-    font-family: iransance !important;
-    font-weight: 100 !important;
-}
-#masthead{
-	background-repeat: no-repeat;
-    background-size: cover;
-    padding: 1rem 2rem;
-}
-</style>
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class('iransance'); ?>>
+<body <?php body_class('iransance rtl'); ?>>
 
 <?php wp_body_open(); ?>
 
@@ -64,12 +49,13 @@
 		 * @hooked storefront_header_cart                      - 60
 		 * @hooked storefront_primary_navigation_wrapper_close - 68
 		 */
-	      do_action( 'storefront_custom_header' );
+	    //   do_action( 'storefront_custom_header' );
 		?>
 
 	</header><!-- #masthead -->
 
 	<?php
+	 do_action( 'storefront_custom_header' );
 	/**
 	 * Functions hooked in to storefront_before_content
 	 *

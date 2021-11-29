@@ -15,20 +15,20 @@
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
     <?php wp_head(); ?>
     <style>
-    .myslider-content{
+    /* .myslider-content{
         width: 100%;
         height: 400px;
         display: flex;
         justify-content: center !important;
         align-items: center !important;
-        background: url("<?php echo esc_url( home_url( '/' ) ); ?>wp-content/themes/faradidparham/assets/images/slider.jpg");
+        background: url("<?php //echo esc_url( home_url( '/' ) ); ?>wp-content/themes/faradidparham/assets/images/slider.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         color:white;
     }
     .myslider-content h1{
         color:white;
-    }
+    } */
     </style>
     <?php
         $post_id = get_the_ID();
@@ -41,7 +41,8 @@
     <section id="slider">
 
         <div class="myslider-content">
-             <?= render_block($blocks[2]);?>
+             <?php  echo do_shortcode(render_block($blocks[0]));?>
+             <?php // do_shortcode(render_block($blocks[2]));?>
         </div>
     </section>
     <header class="sec-bg-color">
@@ -63,36 +64,43 @@
                     </ul>
                 </div>
                 <div class="d-none d-md-flex justify-content-between align-items-center desktop">
-                <?php
-                    $args = array(
-                            'theme_location' => 'primary',
-                            'menu_id' => 'primary-menu',
-                            'container' => false,
-                            'items_wrap' => '<ul>%3$s</ul>',
-                        );
-                        wp_nav_menu($args);
-                ?>
-                    <!-- <ul>
-                        <li>
-                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-                               <img src="<?php // echo esc_url( home_url( '/' ) ); ?>wp-content/themes/faradidparham/assets/images/logo.png" alt="logo">
-                            </a>
-                        </li>    
-                    </ul> -->
                     <?php
-                    $args = array(
-                            'theme_location' => 'secondary',
-                            'menu_id' => 'secondary-menu',
-                            'container' => false,
-                            'items_wrap' => '<ul>%3$s</ul>',
-                        );
-                        wp_nav_menu($args);
-                ?>
+                        $args = array(
+                                'theme_location' => 'primary',
+                                'menu_id' => 'primary-menu',
+                                'container' => false,
+                                'items_wrap' => '<ul>%3$s</ul>',
+                            );
+                            wp_nav_menu($args);
+                    ?>
+                        <!-- <ul>
+                            <li>
+                                <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                                <img src="<?php // echo esc_url( home_url( '/' ) ); ?>wp-content/themes/faradidparham/assets/images/logo.png" alt="logo">
+                                </a>
+                            </li>    
+                        </ul> -->
+                        <?php
+                        $args = array(
+                                'theme_location' => 'secondary',
+                                'menu_id' => 'secondary-menu',
+                                'container' => false,
+                                'items_wrap' => '<ul>%3$s</ul>',
+                            );
+                            wp_nav_menu($args);
+                    ?>
                 </div>
             </section>
             <h1 class="text-center m-auto iransance">
                <?= get_the_title() ?>
             </h1>
+            <section id="cat-icon" class="d-block d-md-none mobileMenu  cursor-pointer">
+                <ul>
+                    <li>
+                 <img src="http://cafezeitoon.ir/wp-content/themes/faradidparham/assets/images/menu.png" alt="menu-cat">           
+                 </li>
+                </ul>
+            </section>
         </section>
         <section class="main-header">
             <!-- <p class="all-cat-title">
@@ -105,9 +113,9 @@
                     <?php
                         $args = array(
                             'taxonomy' => 'product_cat',
-                            'orderby' => 'name',
-                            'order' => 'ASC',
-                            'hide_empty' => false
+                            // 'orderby' => 'name',
+                            // 'order' => 'ASC',
+                            'hide_empty' => true
                         );
                         $categorizes = get_categories($args);
                         // die(var_dump($categorizes[0]->name));
@@ -115,8 +123,7 @@
                         foreach( get_categories($args) as $category ){
                             $termId = $category->term_id ; 
                             $thumbnail_id = get_term_meta( $termId, 'thumbnail_id', true ); 
-                            $image = wp_get_attachment_url( $thumbnail_id );  
-                        
+                            $image = wp_get_attachment_url( $thumbnail_id );                         
                            
                     ?>
                     <div class="swiper-slide">

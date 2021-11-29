@@ -157,7 +157,7 @@ if ( ! function_exists( 'storefront_credit' ) ) {
 
 			<?php if ( ! empty( $links_output ) ) { ?>
 				<br />
-				<a href="https://faradidparham.com/" target="_blank">طراحی شده توسط شرکت فرادید پرهام ایرانیان</a>
+				<a href="https://faradidparham.com/" target="_blank" id="siteInfo" class="text-center text-white font-1">طراحی و توسعه شرکت فرادید پرهام</a>
 			<?php } ?>
 		</div><!-- .site-info -->
 		<?php
@@ -341,8 +341,21 @@ if ( ! function_exists( 'storefront_menu_container_close' ) ) {
             </div>
             </section>
        
-        </section>
-
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+		<h1 class="text-center m-auto iransance">
+				<?= get_the_title() ?>
+            </h1>
+			</a>	
+            <section id="cat-icon" class="d-block d-md-none mobileMenu  cursor-pointer">
+				<ul>
+					<li>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                 <img src="http://cafezeitoon.ir/wp-content/themes/faradidparham/assets/images/menu.png" alt="menu-cat">           
+				 </a>
+				 </li>
+				</ul>
+				</section>
+	</section>
 <?php
     }
 }
@@ -387,7 +400,7 @@ if ( ! function_exists( 'custome_footer_widgets' ) ) {
 				// var_dump(intval(12/$columns));
 				// die(var_dump("$columns"));
 				?>
-				<div class=<?php echo '"row footer-widgets"'; ?>>
+				<div class=<?php echo '"row footer-widgets w-100"'; ?>>
 				<?php
 				for ( $column = 1; $column <= $columns; $column++ ) :
 					
@@ -839,6 +852,14 @@ if ( ! function_exists( 'storefront_header_container' ) ) {
 	 * The header container
 	 */
 	function storefront_header_container() {
+		echo '<div class="col-full">';
+	}
+}
+if ( ! function_exists( 'storefront_header_custom_container' ) ) {
+	/**
+	 * The header container
+	 */
+	function storefront_header_custom_container() {
 		echo '<div class="col-full">';
 	}
 }

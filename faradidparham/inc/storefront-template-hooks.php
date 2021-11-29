@@ -40,14 +40,14 @@ add_action( 'storefront_header', 'storefront_primary_navigation_wrapper_close', 
 |
 |
 |------------------------------------------------------------------------------------------*/
-add_action( 'storefront_custom_header', 'storefront_header_container', 0 );
-add_action( 'storefront_custom_header', 'storefront_site_branding', 20 );
-add_action( 'storefront_custom_header', 'storefront_header_container_close', 30 );
+// add_action( 'storefront_custom_header', 'storefront_header_custom_container', 0 );
+// // add_action( 'storefront_custom_header', 'storefront_site_branding', 20 );
+// add_action( 'storefront_custom_header', 'storefront_header_container_close', 30 );
 add_action( 'storefront_custom_header', 'storefront_menu_container', 41 );
 add_action( 'storefront_custom_header', 'storefront_main_navigation', 41 );
 add_action( 'storefront_custom_header', 'storefront_social_navigation', 42 );
 add_action( 'storefront_custom_header', 'storefront_menu_container_close', 42 );
-add_action( 'storefront_custom_header', 'storefront_primary_navigation_wrapper_close', 68 );
+// add_action( 'storefront_custom_header', 'storefront_primary_navigation_wrapper_close', 68 );
 
 
 /**

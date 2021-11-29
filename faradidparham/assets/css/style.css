@@ -57,7 +57,7 @@ header{
     transform: translate(-50%,-50%);
     background: url(http://cafezeitoon.ir/wp-content/themes/faradidparham/assets/images/logo.png);
     background-repeat: no-repeat;
-    background-position: top;
+    background-position: center;
 	color: transparent;
 }
 .main-header{
@@ -90,11 +90,11 @@ header{
     height: auto;
 } */
 .mySwipercenter .swiper-slide{
-    width: 150px;
+    width: 5rem;
 }
 .product-cat-container{
     /* background:var(--lighter-bg); */
-    width: 5rem;
+    width: 100%;
     border-radius: var(--border-radius);
     padding: 0rem 0.5rem  0.1rem;
     margin: auto;
@@ -164,7 +164,7 @@ main{
 #menu{
     width: 100%;
     margin: auto;
-	padding: 0rem 2rem;
+	padding: 0rem;
 } 
 #menu ul{
     list-style: none !important;
@@ -182,6 +182,17 @@ main{
 #menu ul li img{
     width: 1.5rem;
 }
+#cat-icon ul{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+    margin: 0;
+}
+#cat-icon ul li{
+    padding: 0 0.5rem;
+}
 .card-img,.card-img img{
     width: 100%;
     border-radius: var(--border-radius);
@@ -194,7 +205,7 @@ main{
 }
 .main-page-foodcard h2 ,.main-page-foodcard h3{
     color:var(--third-txt-color);
-    font-size: 1.2rem;
+    font-size: 0.9rem;
 } 
 
 .bottomcontent{
@@ -218,6 +229,9 @@ main{
     left: 0;
     transform: translate(0px, -72px);
 }
+.fixedheader~main{
+    padding-top: 15rem;
+}
 a:focus, button:focus, .button.alt:focus, input:focus, textarea:focus, input[type="button"]:focus, input[type="reset"]:focus, input[type="submit"]:focus, input[type="email"]:focus, input[type="tel"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="search"]:focus {
     outline-color: transparent!important;
 }
@@ -234,7 +248,7 @@ a:focus, button:focus, .button.alt:focus, input:focus, textarea:focus, input[typ
     width: 100%;
     animation-name: headermotions;
     animation-duration: 1s;
-    top:4rem;
+    top:2rem;
     left: 0;
     transform: translate(0px, -37px);
 }
@@ -248,7 +262,7 @@ a:focus, button:focus, .button.alt:focus, input:focus, textarea:focus, input[typ
     color:var(--third-txt-color);
 }
 .add-remove-basket-main input{
-        width: 4rem !important;
+        width: 2rem !important;
         padding: 0 !important;
         text-align: center !important;
         margin: auto !important;
@@ -279,6 +293,7 @@ a:focus, button:focus, .button.alt:focus, input:focus, textarea:focus, input[typ
     /* background:url(/shahrkhodro/wordpress/wp-content/themes/faradidparham/assets/images/price.png); */
     background-size: cover;
     background-repeat: no-repeat;
+    font-size: 0.8rem;
 }
 #loading{
     position: fixed;
@@ -416,7 +431,7 @@ a:focus, button:focus, .button.alt:focus, input:focus, textarea:focus, input[typ
     |
     -------------------------------------------------------------------*/
     .full-menu-container{
-        padding: 1rem 0.5rem;
+        padding: 5rem 0.5rem;
         position: fixed;
         width: 100%;
         height: 100vh;
@@ -424,10 +439,14 @@ a:focus, button:focus, .button.alt:focus, input:focus, textarea:focus, input[typ
         top: 0px;
         right: 0;
         z-index: 8;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        font-size: 2rem;
     }
 
     #mobileMenuContainer{
-        padding: 1rem 0.5rem;
+        padding: 3rem 0.5rem;
         position: fixed;
         width: 75%;
         height: 100vh;
@@ -450,7 +469,8 @@ a:focus, button:focus, .button.alt:focus, input:focus, textarea:focus, input[typ
         padding: 0;
     }
     .plus-btn,.minus-btn{
-        font-size: 1.8rem;
+        font-size: 1rem;
+        padding: 0px 0.7rem;;
     }
     .plus-minus-btn-product,.plus-minus-btn-product{
         overflow: hidden;
@@ -459,7 +479,12 @@ a:focus, button:focus, .button.alt:focus, input:focus, textarea:focus, input[typ
         display:flex;
         align-items: flex-start; 
         justify-content: space-between;
-        padding: 1rem 3rem;
+        padding: 0rem 0.6rem 0 0;
+    }
+    .product-content-container .topcontent p{
+        display: block;
+        font-size: 0.6rem;
+        color: gray;
     }
     #mobileMenuContainer{
         animation-name: mobileMenuMotion;
@@ -485,8 +510,77 @@ a:focus, button:focus, .button.alt:focus, input:focus, textarea:focus, input[typ
 #slider{
     display: none;
 }
-
+.mb-p-0{
+    padding: 0;
+}
+.input-group{
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap!important;
+    flex-wrap: nowrap!important;;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+}
+.cursor-pointer{
+    cursor :pointer
+}
+footer .all-pruduct-cat{
+    padding: 1rem;
+    width: 80%;
+    margin: auto;
+    border-radius: 20px;
+    position: fixed;
+    top: 1.4rem;
+     left: 50%;
+    transform: translate(-50%,31px);
+    z-index: 99;
+}
+.close-container{
+    padding: 1rem;
+}
+#headChef{
+    /* position: fixed;
+    top: 0.5rem;
+    left: 4.5rem; */
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    width: 26px;
+    z-index: 3;
+}
+.cart-number-container span{
+    font-size: 0.8rem;
+    padding: 0.1rem 0;
+    border-radius: 100%;
+    /* background: var(--sec-bg-color); */
+    color: var(--sec-txt-color);
+}
+.end-order{
+ display: none;
+}
+#swipHand{
+    display: block;
+    position: absolute;
+    top: 11rem;
+    right: 0;
+    width: 62px;
+}
+.font-1{
+    font-size: 0.9rem;
+}
+.main-page-footer{
+    border-top:1px solid #363636;
+    margin-top:3.5rem;
+}
 @media (min-width:768px) {
+
+    .mySwipercenter .swiper-slide{
+        width: 150px;
+    }
     .md-px-3{
         padding-left: 1rem;
         padding-right: 1rem;
@@ -505,8 +599,6 @@ a:focus, button:focus, .button.alt:focus, input:focus, textarea:focus, input[typ
     align-items: flex-start; 
     justify-content: space-between;
     padding: 0 3rem;
-
-
 }
 .product-cat-container{
     /* background:var(--lighter-bg); */
@@ -517,7 +609,97 @@ a:focus, button:focus, .button.alt:focus, input:focus, textarea:focus, input[typ
     border: 1px solid var(--base-txt-color) !important;
 	cursor:pointer; 
 }
+.price-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    width: 3rem;
+    height: 3rem;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-size: 1rem;
+
+}
 #slider{
     display: block;
+}
+#menu{
+    width: 100%;
+    margin: auto;
+	padding: 0rem 2rem;
+} 
+.mb-p-0{
+    padding-left: calc(var(--mdb-gutter-x)/2);
+    padding-right: calc(var(--mdb-gutter-x)/2);
+}
+.input-group{
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap!important;;
+    flex-wrap: wrap!important;;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+}
+.plus-btn,.minus-btn{
+    font-size: 1.8rem;
+    padding: 0.625rem 1.5rem 0.5rem;
+}
+.add-remove-basket-main input{
+    width: 4rem !important;
+    padding: 0 !important;
+    text-align: center !important;
+    margin: auto !important;
+    background: transparent !important;
+    border-top: 1px solid var(--sec-bg-color) !important;
+    border-bottom: 1px solid var(--sec-bg-color) !important;
+    color:var(--third-txt-color) !important;
+}
+.product-content-container .topcontent p{
+    display: block;
+}
+.page-template-template-fullwidth-php .woocommerce-MyAccount-navigation {
+    width: 21.7391304348%;
+    float: right!important;
+    margin-left: 0;
+}
+#headChef{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+    left: 0;
+    top:auto;
+    cursor: pointer;
+    width: 6rem;
+}
+.cart-number-container span{
+    font-size:1rem;
+    padding: 0.1rem 0.7rem;
+    border-radius: 100%;
+    background: var(--sec-bg-color);
+    color: var(--base-txt-color);
+}
+.end-order{
+    display: block;
+    text-align: center;
+    color: var(--sec-txt-color);
+}
+#swipHand{
+   display: none;
+}
+.fixedheader.hasWpadmin{
+    position: fixed;
+    width: 100%;
+    animation-name: headermotions;
+    animation-duration: 1s;
+    top:4rem;
+    left: 0;
+    transform: translate(0px, -37px);
 }
 }
