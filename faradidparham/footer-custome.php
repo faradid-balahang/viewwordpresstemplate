@@ -33,7 +33,7 @@
        'taxonomy'    => 'product_cat',
     //    'orderby'     => 'name',
     //    'order'       => 'ASC',
-       'hide_empty'  => true
+       'hide_empty'  => false
     );
     $categorizes = get_categories($args);
     $number = 1;
@@ -42,7 +42,7 @@
         $thumbnail_id = get_term_meta( $termId, 'thumbnail_id', true ); 
         $image = wp_get_attachment_url( $thumbnail_id );     
     ?>
-    <div id="cat-number-<?=$number?>" class="border border-dark rounded cursor-pointer col-4 d-flex flex-column justify-contenet-center align-items-center">
+    <div id="cat-number-<?=$number?>" class="border border-dark rounded cursor-pointer col-3 d-flex flex-column justify-contenet-center align-items-center">
         <p class="product-icon">
             <img src="<?=$image?>" alt="<?= $category->name; ?>">
         </p>
@@ -70,10 +70,10 @@
         پایان سفارش
     </p>
 </div> 
-<div id="swipHand">
+<!-- <div id="swipHand">
     <img src="http://cafezeitoon.ir/wp-content/themes/faradidparham/assets/images/hand-swipe.gif" alt="اسلایدر کافه زیتون">
 
-</div>  
+</div>   -->
 </footer>
 <script src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/themes/faradidparham/assets/js/jquery-3.6.0.min.js"></script>
     <script src="<?php echo esc_url( home_url( '/' ) ); ?>wp-content/themes/faradidparham/assets/js/mdb.min.js"></script>

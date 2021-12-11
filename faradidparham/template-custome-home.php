@@ -25,7 +25,7 @@ get_header('custome'); ?>
         'taxonomy' => 'product_cat',
         // 'orderby' => 'name',
         // 'order' => 'ASC',
-        'hide_empty' => true
+        'hide_empty' => false
     );
     $categorizes = get_categories($fargs);
     foreach( get_categories($fargs) as $category ){
@@ -51,7 +51,7 @@ get_header('custome'); ?>
             'product_cat_id'=>$product_cat_id,
             'orderby'   => 'meta_value_num',
             'meta_key'  => '_price',
-            'order' => 'asc',
+            'order' => 'desc',
             'posts_per_page' => -1,
             'tax_query'             => array(
                 array(

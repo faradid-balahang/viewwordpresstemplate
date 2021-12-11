@@ -169,7 +169,7 @@
         align-items: center;
     }
     .superheader h1{
-        width: 50%;
+        width: 8rem;
         height: 6rem;
         padding: 7px 6px;
         font-size: 1.2rem;
@@ -212,6 +212,25 @@
     }
     #menu ul li img{
         width: 1.5rem;
+    }
+    #menu .desktop>ul>li{
+        padding: 2rem 1rem;
+    }
+    #menu .desktop>ul>li{
+        position: relative;
+    }
+    #menu .desktop>ul>li>ul{
+        position: absolute;
+        top: 4rem;
+        width: 300px;
+        z-index: 2;
+        background: black;
+        display: none;
+        right: 0;
+    
+    }
+    #menu .desktop>ul>li:hover>ul{
+        display: block;
     }
     #cat-icon ul{
         list-style: none;
@@ -332,8 +351,33 @@ footer .widget{
     letter-spacing: -1px;
     margin: 0;
 }
+.u-columns.woocommerce-Addresses.col2-set.addresses .col-1{
+    width: 100% !important;
+}
+.u-columns.woocommerce-Addresses.col2-set.addresses .col-2{
+    width: 100% !important;
+}
+.woocommerce-button.button{
+    min-width: 3.5rem;
+    display: block;
+    min-width: 3.5rem;
+    display: block;
+    margin-top: 1rem;
+    direction: rtl;
+    text-align: right;
+} 
+.woocommerce-orders-table__cell-order-actions .woocommerce-button.button:first-child{
+    margin-top: 2rem;
+}
 @media (min-width:768px) {
+.woocommerce-button.button{
+        min-width: auto;
+        display: inline-block;
+        margin-top: 0rem;
+        direction: rtl;
+        text-align: right;
 
+} 
 .right-sidebar .widget-area {
     border-right: 1px solid #cccccc;
     padding: 0 2rem;
@@ -344,7 +388,7 @@ footer .widget{
  header#masthead{
     background: url("http://cafezeitoon.ir/wp-content/uploads/2021/11/pages-header-2.jpg");
     background-size: cover;
-    min-height: 10rem;
+    min-height: 23rem;
  }
  .site-header {
     border-bottom-color: transparent !important;

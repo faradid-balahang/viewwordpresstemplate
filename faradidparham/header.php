@@ -51,10 +51,24 @@
 		 */
 	    //   do_action( 'storefront_custom_header' );
 		?>
-
-	</header><!-- #masthead -->
+<style>
+@media print {
+	@font-face {
+		font-family: 'iransance';
+		src: url('https://cafezeitoon.ir/wp-content/themes/faradidparham/assets/css/fonts/IRANSansWeb.woff2') format('woff2');  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+	}
+    body{
+		font-family: 'iransance';
+		font-size: 20px;
+		text-align: right;
+		direction: rtl;
+	}
+}
+</style>
+</header><!-- #masthead -->
 
 	<?php
+	 wp_cache_flush();
 	 do_action( 'storefront_custom_header' );
 	/**
 	 * Functions hooked in to storefront_before_content

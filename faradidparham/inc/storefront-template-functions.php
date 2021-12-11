@@ -316,7 +316,7 @@ if ( ! function_exists( 'storefront_menu_container' ) ) {
 		?>
 		<section class="superheader px-3">
             <section id="menu">
-                <div class="d-block d-md-none mobileMenu">
+                <div class="d-block d-xl-none mobileMenu">
                     <ul>
                         <li>
                         <div class="row cf">
@@ -331,7 +331,7 @@ if ( ! function_exists( 'storefront_menu_container' ) ) {
                         </li>
                     </ul>
                 </div>
-                <div class="d-none d-md-flex justify-content-between align-items-center desktop">
+                <div class="d-none d-xl-flex justify-content-between align-items-center desktop">
 		<?php
 	}
 }
@@ -342,11 +342,11 @@ if ( ! function_exists( 'storefront_menu_container_close' ) ) {
             </section>
        
 			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-		<h1 class="text-center m-auto iransance">
+		<h1 class="text-center m-auto iransance d-block d-sm-block d-lg-none">
 				<?= get_the_title() ?>
             </h1>
 			</a>	
-            <section id="cat-icon" class="d-block d-md-none mobileMenu  cursor-pointer">
+            <section id="cat-icon" class="d-block d-xl-none mobileMenu  cursor-pointer">
 				<ul>
 					<li>
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>">

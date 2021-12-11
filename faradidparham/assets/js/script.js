@@ -1,39 +1,44 @@
 
 $("#headChef").addClass('d-none');
-$("#headChef").on("click",function(){
-  console.log("hi");
-  if(window.counter ==undefined){
-    window.counter =1;
-    console.log("hi");
+$(document).on('click','#headChef',function(){
 
+  console.log("hi");
+
+if(window.counter ==undefined){
+    if(window.newData != undefined){
+      window.counter =1;
+      console.log("hi");
       $("#loading").removeClass('d-none');
-  newData = window.newData;
-  console.log(newData);
-  $.ajax({
-  type: 'post',
-  url: wc_add_to_cart_params.ajax_url,
-  data: newData,
-  beforeSend: function (response) {
-      // $thisbutton.removeClass('added').addClass('loading');
-  },
-  complete: function (response) {
-      // $thisbutton.addClass('added').removeClass('loading');
-  }, 
-  success: function (response) { 
-  $("#loading").addClass('d-none');
-   Swal.fire({
-      title: 'ثبت شد',
-      text: 'کالای شما به سبد خرید اضافه شد',
-      icon: 'success',
-      confirmButtonText: 'خب'
-  }).then((result) => {
-    /* Read more about isConfirmed, isDenied below */
-    if (result.isConfirmed) {
+    newData = window.newData;
+    console.log(newData);
+    $.ajax({
+    type: 'post',
+    url: wc_add_to_cart_params.ajax_url,
+    data: newData,
+    beforeSend: function (response) {
+        // $thisbutton.removeClass('added').addClass('loading');
+    },
+    complete: function (response) {
+        // $thisbutton.addClass('added').removeClass('loading');
+    }, 
+    success: function (response) { 
+    $("#loading").addClass('d-none');
+    Swal.fire({
+        title: 'ثبت شد',
+        text: 'کالای شما به سبد خرید اضافه شد',
+        icon: 'success',
+        confirmButtonText: 'خب'
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        window.location.replace("cart/");
+      }
+    });        
+  }
+  });
+    }else{
       window.location.replace("cart/");
     }
-  });        
-}
-});
   }else{
 
   }
@@ -46,6 +51,7 @@ if ($(window).width() < 768) {
     var newLi = document.createElement("li");
     $(newLi).appendTo("#cat-icon ul");
     $("#headChef").clone().appendTo(newLi);
+    
     $("#headChef").removeClass('d-none');
     var titles = $(".main-product-cat-section .main-title img");
     console.log(titles);
@@ -151,6 +157,7 @@ $(function(){
   });
   $("#loading").addClass('d-none');
      // slider center
+
      var swiper = new Swiper(".mySwipercenter", {
         slidesPerView: 'auto',
         spaceBetween : 4,
@@ -159,7 +166,7 @@ $(function(){
 
         slideToClickedSlide:true,
         lazy: true,
-        loop:true,
+        // loop:true,
         onSlideChangeEnd:function(e){
           swiper.update(true);
         },
@@ -303,7 +310,7 @@ $(function(){
              var src = String(activeImagSrc.substr(0, lastSlash))+String(newname);
              $(".mySwipercenter .swiper-slide-active img").attr("src",src);
           }
-          var others = $(".mySwipercenter .swiper-slide-visible:not(.swiper-slide-active) img");
+          var others = $(".mySwipercenter .swiper-slide:not(.swiper-slide-active) img");
           var i;
           for (i = 0; i < others.length; i++) {
             var srcs = others[i].getAttribute("src");
@@ -328,6 +335,499 @@ $(function(){
               //console.log(realnames);
               //console.log(thenames);
               //console.log(srcs);
+            }
+     
+          }
+        });
+        //  custom
+        $("#top-product-5").on("click",function(){
+          var headerHight =$("header").prop("scrollHeight");
+          console.log("mahallo");
+          $(".swiper-slide-prev").removeClass("swiper-slide-prev");
+          $(".swiper-slide-active").addClass("swiper-slide-prev");
+          $(".swiper-slide-active").removeClass("swiper-slide-active");
+          $("#slide-for-top-5").addClass("swiper-slide-active");
+          var firstPosition7 = parseInt(parseInt($("#esperso-milk"+5).position().top)-parseInt(headerHight));
+          //console.log(firstPosition13);
+          $('html, body').animate({
+            
+              scrollTop: firstPosition7
+          }, 20);
+          console.log("change logo");
+          var activeImagSrc = String($("#slide-for-top-5 img").attr("src"));
+          var lastSlash = parseInt(activeImagSrc.lastIndexOf("/"));
+          var thename = activeImagSrc.substr(lastSlash);
+          var dotIndex = parseInt(thename.lastIndexOf("."));
+          if(thename.indexOf("rev")==-1){
+             var newname = String(thename.substr(0,dotIndex))+"-rev.png";
+             var src = String(activeImagSrc.substr(0, lastSlash))+String(newname);
+             $(".mySwipercenter .swiper-slide-active img").attr("src",src);
+          }
+          var others = $(".mySwipercenter .swiper-slide:not(.swiper-slide-active) img");
+          var i;
+          for (i = 0; i < others.length; i++) {
+            var srcs = others[i].getAttribute("src");
+
+            if(srcs.indexOf("rev") !=-1){
+              var lastSlashs = parseInt(srcs.lastIndexOf("/"));
+              var thenames = srcs.substr(lastSlashs);
+              var dotIndexs = parseInt(thenames.lastIndexOf("."));
+              var realnames =  String(thenames.substr(0,dotIndexs));
+              var revIndexs = realnames.indexOf("-rev");
+              var newnames  = String(realnames.substr(0,revIndexs))+".png";
+              var srcss = String(srcs.substr(0, lastSlashs))+String(newnames);
+              others[i].setAttribute("src",srcss);
+            }
+     
+          }
+        });
+        $("#top-product-6").on("click",function(){
+          var headerHight =$("header").prop("scrollHeight");
+          console.log("mahallo");
+          $(".swiper-slide-prev").removeClass("swiper-slide-prev");
+          $(".swiper-slide-active").addClass("swiper-slide-prev");
+          $(".swiper-slide-active").removeClass("swiper-slide-active");
+          $("#slide-for-top-6").addClass("swiper-slide-active");
+          var firstPosition7 = parseInt(parseInt($("#esperso-milk"+6).position().top)-parseInt(headerHight));
+          //console.log(firstPosition13);
+          $('html, body').animate({
+            
+              scrollTop: firstPosition7
+          }, 20);
+          console.log("change logo");
+          var activeImagSrc = String($("#slide-for-top-6 img").attr("src"));
+          var lastSlash = parseInt(activeImagSrc.lastIndexOf("/"));
+          var thename = activeImagSrc.substr(lastSlash);
+          var dotIndex = parseInt(thename.lastIndexOf("."));
+          if(thename.indexOf("rev")==-1){
+             var newname = String(thename.substr(0,dotIndex))+"-rev.png";
+             var src = String(activeImagSrc.substr(0, lastSlash))+String(newname);
+             $(".mySwipercenter .swiper-slide-active img").attr("src",src);
+          }
+          var others = $(".mySwipercenter .swiper-slide:not(.swiper-slide-active) img");
+          var i;
+          for (i = 0; i < others.length; i++) {
+            var srcs = others[i].getAttribute("src");
+
+            if(srcs.indexOf("rev") !=-1){
+              var lastSlashs = parseInt(srcs.lastIndexOf("/"));
+              var thenames = srcs.substr(lastSlashs);
+              var dotIndexs = parseInt(thenames.lastIndexOf("."));
+              var realnames =  String(thenames.substr(0,dotIndexs));
+              var revIndexs = realnames.indexOf("-rev");
+              var newnames  = String(realnames.substr(0,revIndexs))+".png";
+              var srcss = String(srcs.substr(0, lastSlashs))+String(newnames);
+              others[i].setAttribute("src",srcss);
+            }
+     
+          }
+        });
+        $("#top-product-7").on("click",function(){
+          var headerHight =$("header").prop("scrollHeight");
+          console.log("mahallo");
+          $(".swiper-slide-prev").removeClass("swiper-slide-prev");
+          $(".swiper-slide-active").addClass("swiper-slide-prev");
+          $(".swiper-slide-active").removeClass("swiper-slide-active");
+          $("#slide-for-top-7").addClass("swiper-slide-active");
+          var firstPosition7 = parseInt(parseInt($("#esperso-milk"+7).position().top)-parseInt(headerHight));
+          //console.log(firstPosition13);
+          $('html, body').animate({
+            
+              scrollTop: firstPosition7
+          }, 20);
+          console.log("change logo");
+          var activeImagSrc = String($("#slide-for-top-7 img").attr("src"));
+          var lastSlash = parseInt(activeImagSrc.lastIndexOf("/"));
+          var thename = activeImagSrc.substr(lastSlash);
+          var dotIndex = parseInt(thename.lastIndexOf("."));
+          if(thename.indexOf("rev")==-1){
+             var newname = String(thename.substr(0,dotIndex))+"-rev.png";
+             var src = String(activeImagSrc.substr(0, lastSlash))+String(newname);
+             $(".mySwipercenter .swiper-slide-active img").attr("src",src);
+          }
+          var others = $(".mySwipercenter .swiper-slide:not(.swiper-slide-active) img");
+          var i;
+          for (i = 0; i < others.length; i++) {
+            var srcs = others[i].getAttribute("src");
+
+            if(srcs.indexOf("rev") !=-1){
+              var lastSlashs = parseInt(srcs.lastIndexOf("/"));
+              var thenames = srcs.substr(lastSlashs);
+              var dotIndexs = parseInt(thenames.lastIndexOf("."));
+              var realnames =  String(thenames.substr(0,dotIndexs));
+              var revIndexs = realnames.indexOf("-rev");
+              var newnames  = String(realnames.substr(0,revIndexs))+".png";
+              var srcss = String(srcs.substr(0, lastSlashs))+String(newnames);
+              others[i].setAttribute("src",srcss);
+            }
+     
+          }
+        });
+        $("#top-product-8").on("click",function(){
+          var headerHight =$("header").prop("scrollHeight");
+          console.log("mahallo");
+          $(".swiper-slide-prev").removeClass("swiper-slide-prev");
+          $(".swiper-slide-active").addClass("swiper-slide-prev");
+          $(".swiper-slide-active").removeClass("swiper-slide-active");
+          $("#slide-for-top-8").addClass("swiper-slide-active");
+          var firstPosition8 = parseInt(parseInt($("#esperso-milk"+8).position().top)-parseInt(headerHight));
+          //console.log(firstPosition13);
+          $('html, body').animate({
+            
+              scrollTop: firstPosition8
+          }, 20);
+          console.log("change logo");
+          var activeImagSrc = String($("#slide-for-top-8 img").attr("src"));
+          var lastSlash = parseInt(activeImagSrc.lastIndexOf("/"));
+          var thename = activeImagSrc.substr(lastSlash);
+          var dotIndex = parseInt(thename.lastIndexOf("."));
+          if(thename.indexOf("rev")==-1){
+             var newname = String(thename.substr(0,dotIndex))+"-rev.png";
+             var src = String(activeImagSrc.substr(0, lastSlash))+String(newname);
+             $(".mySwipercenter .swiper-slide-active img").attr("src",src);
+          }
+          var others = $(".mySwipercenter .swiper-slide:not(.swiper-slide-active) img");
+          var i;
+          for (i = 0; i < others.length; i++) {
+            var srcs = others[i].getAttribute("src");
+
+            if(srcs.indexOf("rev") !=-1){
+              var lastSlashs = parseInt(srcs.lastIndexOf("/"));
+              var thenames = srcs.substr(lastSlashs);
+              var dotIndexs = parseInt(thenames.lastIndexOf("."));
+              var realnames =  String(thenames.substr(0,dotIndexs));
+              var revIndexs = realnames.indexOf("-rev");
+              var newnames  = String(realnames.substr(0,revIndexs))+".png";
+              var srcss = String(srcs.substr(0, lastSlashs))+String(newnames);
+              others[i].setAttribute("src",srcss);
+            }
+     
+          }
+        });
+        $("#top-product-9").on("click",function(){
+          var headerHight =$("header").prop("scrollHeight");
+          console.log("mahallo");
+          $(".swiper-slide-prev").removeClass("swiper-slide-prev");
+          $(".swiper-slide-active").addClass("swiper-slide-prev");
+          $(".swiper-slide-active").removeClass("swiper-slide-active");
+          $("#slide-for-top-9").addClass("swiper-slide-active");
+          var firstPosition9 = parseInt(parseInt($("#esperso-milk"+9).position().top)-parseInt(headerHight));
+          //console.log(firstPosition13);
+          $('html, body').animate({
+            
+              scrollTop: firstPosition9
+          }, 20);
+          console.log("change logo");
+          var activeImagSrc = String($("#slide-for-top-9 img").attr("src"));
+          var lastSlash = parseInt(activeImagSrc.lastIndexOf("/"));
+          var thename = activeImagSrc.substr(lastSlash);
+          var dotIndex = parseInt(thename.lastIndexOf("."));
+          if(thename.indexOf("rev")==-1){
+             var newname = String(thename.substr(0,dotIndex))+"-rev.png";
+             var src = String(activeImagSrc.substr(0, lastSlash))+String(newname);
+             $(".mySwipercenter .swiper-slide-active img").attr("src",src);
+          }
+          var others = $(".mySwipercenter .swiper-slide:not(.swiper-slide-active) img");
+          var i;
+          for (i = 0; i < others.length; i++) {
+            var srcs = others[i].getAttribute("src");
+
+            if(srcs.indexOf("rev") !=-1){
+              var lastSlashs = parseInt(srcs.lastIndexOf("/"));
+              var thenames = srcs.substr(lastSlashs);
+              var dotIndexs = parseInt(thenames.lastIndexOf("."));
+              var realnames =  String(thenames.substr(0,dotIndexs));
+              var revIndexs = realnames.indexOf("-rev");
+              var newnames  = String(realnames.substr(0,revIndexs))+".png";
+              var srcss = String(srcs.substr(0, lastSlashs))+String(newnames);
+              others[i].setAttribute("src",srcss);
+            }
+     
+          }
+        });
+        $("#top-product-10").on("click",function(){
+          var headerHight =$("header").prop("scrollHeight");
+          console.log("mahallo");
+          $(".swiper-slide-prev").removeClass("swiper-slide-prev");
+          $(".swiper-slide-active").addClass("swiper-slide-prev");
+          $(".swiper-slide-active").removeClass("swiper-slide-active");
+          $("#slide-for-top-10").addClass("swiper-slide-active");
+          var firstPosition10 = parseInt(parseInt($("#esperso-milk"+10).position().top)-parseInt(headerHight));
+          //console.log(firstPosition13);
+          $('html, body').animate({
+            
+              scrollTop: firstPosition10
+          }, 20);
+          console.log("change logo");
+          var activeImagSrc = String($("#slide-for-top-10 img").attr("src"));
+          var lastSlash = parseInt(activeImagSrc.lastIndexOf("/"));
+          var thename = activeImagSrc.substr(lastSlash);
+          var dotIndex = parseInt(thename.lastIndexOf("."));
+          if(thename.indexOf("rev")==-1){
+             var newname = String(thename.substr(0,dotIndex))+"-rev.png";
+             var src = String(activeImagSrc.substr(0, lastSlash))+String(newname);
+             $(".mySwipercenter .swiper-slide-active img").attr("src",src);
+          }
+          var others = $(".mySwipercenter .swiper-slide:not(.swiper-slide-active) img");
+          var i;
+          for (i = 0; i < others.length; i++) {
+            var srcs = others[i].getAttribute("src");
+
+            if(srcs.indexOf("rev") !=-1){
+              var lastSlashs = parseInt(srcs.lastIndexOf("/"));
+              var thenames = srcs.substr(lastSlashs);
+              var dotIndexs = parseInt(thenames.lastIndexOf("."));
+              var realnames =  String(thenames.substr(0,dotIndexs));
+              var revIndexs = realnames.indexOf("-rev");
+              var newnames  = String(realnames.substr(0,revIndexs))+".png";
+              var srcss = String(srcs.substr(0, lastSlashs))+String(newnames);
+              others[i].setAttribute("src",srcss);
+            }
+     
+          }
+        });
+        $("#top-product-11").on("click",function(){
+          var headerHight =$("header").prop("scrollHeight");
+          console.log("mahallo");
+          $(".swiper-slide-prev").removeClass("swiper-slide-prev");
+          $(".swiper-slide-active").addClass("swiper-slide-prev");
+          $(".swiper-slide-active").removeClass("swiper-slide-active");
+          $("#slide-for-top-11").addClass("swiper-slide-active");
+          var firstPosition11 = parseInt(parseInt($("#esperso-milk"+11).position().top)-parseInt(headerHight));
+          //console.log(firstPosition13);
+          $('html, body').animate({
+            
+              scrollTop: firstPosition11
+          }, 20);
+          console.log("change logo");
+          var activeImagSrc = String($("#slide-for-top-11 img").attr("src"));
+          var lastSlash = parseInt(activeImagSrc.lastIndexOf("/"));
+          var thename = activeImagSrc.substr(lastSlash);
+          var dotIndex = parseInt(thename.lastIndexOf("."));
+          if(thename.indexOf("rev")==-1){
+             var newname = String(thename.substr(0,dotIndex))+"-rev.png";
+             var src = String(activeImagSrc.substr(0, lastSlash))+String(newname);
+             $(".mySwipercenter .swiper-slide-active img").attr("src",src);
+          }
+          var others = $(".mySwipercenter .swiper-slide:not(.swiper-slide-active) img");
+          var i;
+          for (i = 0; i < others.length; i++) {
+            var srcs = others[i].getAttribute("src");
+
+            if(srcs.indexOf("rev") !=-1){
+              var lastSlashs = parseInt(srcs.lastIndexOf("/"));
+              var thenames = srcs.substr(lastSlashs);
+              var dotIndexs = parseInt(thenames.lastIndexOf("."));
+              var realnames =  String(thenames.substr(0,dotIndexs));
+              var revIndexs = realnames.indexOf("-rev");
+              var newnames  = String(realnames.substr(0,revIndexs))+".png";
+              var srcss = String(srcs.substr(0, lastSlashs))+String(newnames);
+              others[i].setAttribute("src",srcss);
+            }
+     
+          }
+        });
+        $("#top-product-12").on("click",function(){
+          var headerHight =$("header").prop("scrollHeight");
+          console.log("mahallo");
+          $(".swiper-slide-prev").removeClass("swiper-slide-prev");
+          $(".swiper-slide-active").addClass("swiper-slide-prev");
+          $(".swiper-slide-active").removeClass("swiper-slide-active");
+          $("#slide-for-top-12").addClass("swiper-slide-active");
+          var firstPosition12 = parseInt(parseInt($("#esperso-milk"+12).position().top)-parseInt(headerHight));
+          //console.log(firstPosition13);
+          $('html, body').animate({
+            
+              scrollTop: firstPosition12
+          }, 20);
+          console.log("change logo");
+          var activeImagSrc = String($("#slide-for-top-12 img").attr("src"));
+          var lastSlash = parseInt(activeImagSrc.lastIndexOf("/"));
+          var thename = activeImagSrc.substr(lastSlash);
+          var dotIndex = parseInt(thename.lastIndexOf("."));
+          if(thename.indexOf("rev")==-1){
+             var newname = String(thename.substr(0,dotIndex))+"-rev.png";
+             var src = String(activeImagSrc.substr(0, lastSlash))+String(newname);
+             $(".mySwipercenter .swiper-slide-active img").attr("src",src);
+          }
+          var others = $(".mySwipercenter .swiper-slide:not(.swiper-slide-active) img");
+          var i;
+          for (i = 0; i < others.length; i++) {
+            var srcs = others[i].getAttribute("src");
+
+            if(srcs.indexOf("rev") !=-1){
+              var lastSlashs = parseInt(srcs.lastIndexOf("/"));
+              var thenames = srcs.substr(lastSlashs);
+              var dotIndexs = parseInt(thenames.lastIndexOf("."));
+              var realnames =  String(thenames.substr(0,dotIndexs));
+              var revIndexs = realnames.indexOf("-rev");
+              var newnames  = String(realnames.substr(0,revIndexs))+".png";
+              var srcss = String(srcs.substr(0, lastSlashs))+String(newnames);
+              others[i].setAttribute("src",srcss);
+            }
+     
+          }
+        });
+        $("#top-product-13").on("click",function(){
+          var headerHight =$("header").prop("scrollHeight");
+          console.log("mahallo");
+          $(".swiper-slide-prev").removeClass("swiper-slide-prev");
+          $(".swiper-slide-active").addClass("swiper-slide-prev");
+          $(".swiper-slide-active").removeClass("swiper-slide-active");
+          $("#slide-for-top-13").addClass("swiper-slide-active");
+          var firstPosition13 = parseInt(parseInt($("#esperso-milk"+13).position().top)-parseInt(headerHight));
+          //console.log(firstPosition13);
+          $('html, body').animate({
+            
+              scrollTop: firstPosition13
+          }, 20);
+          console.log("change logo");
+          var activeImagSrc = String($("#slide-for-top-13 img").attr("src"));
+          var lastSlash = parseInt(activeImagSrc.lastIndexOf("/"));
+          var thename = activeImagSrc.substr(lastSlash);
+          var dotIndex = parseInt(thename.lastIndexOf("."));
+          if(thename.indexOf("rev")==-1){
+             var newname = String(thename.substr(0,dotIndex))+"-rev.png";
+             var src = String(activeImagSrc.substr(0, lastSlash))+String(newname);
+             $(".mySwipercenter .swiper-slide-active img").attr("src",src);
+          }
+          var others = $(".mySwipercenter .swiper-slide:not(.swiper-slide-active) img");
+          var i;
+          for (i = 0; i < others.length; i++) {
+            var srcs = others[i].getAttribute("src");
+
+            if(srcs.indexOf("rev") !=-1){
+              var lastSlashs = parseInt(srcs.lastIndexOf("/"));
+              var thenames = srcs.substr(lastSlashs);
+              var dotIndexs = parseInt(thenames.lastIndexOf("."));
+              var realnames =  String(thenames.substr(0,dotIndexs));
+              var revIndexs = realnames.indexOf("-rev");
+              var newnames  = String(realnames.substr(0,revIndexs))+".png";
+              var srcss = String(srcs.substr(0, lastSlashs))+String(newnames);
+              others[i].setAttribute("src",srcss);
+            }
+     
+          }
+        });
+        $("#top-product-14").on("click",function(){
+          var headerHight =$("header").prop("scrollHeight");
+          console.log("mahallo");
+          $(".swiper-slide-prev").removeClass("swiper-slide-prev");
+          $(".swiper-slide-active").addClass("swiper-slide-prev");
+          $(".swiper-slide-active").removeClass("swiper-slide-active");
+          $("#slide-for-top-14").addClass("swiper-slide-active");
+          var firstPosition14 = parseInt(parseInt($("#esperso-milk"+14).position().top)-parseInt(headerHight));
+          //console.log(firstPosition13);
+          $('html, body').animate({
+            
+              scrollTop: firstPosition14
+          }, 20);
+          console.log("change logo");
+          var activeImagSrc = String($("#slide-for-top-14 img").attr("src"));
+          var lastSlash = parseInt(activeImagSrc.lastIndexOf("/"));
+          var thename = activeImagSrc.substr(lastSlash);
+          var dotIndex = parseInt(thename.lastIndexOf("."));
+          if(thename.indexOf("rev")==-1){
+             var newname = String(thename.substr(0,dotIndex))+"-rev.png";
+             var src = String(activeImagSrc.substr(0, lastSlash))+String(newname);
+             $(".mySwipercenter .swiper-slide-active img").attr("src",src);
+          }
+          var others = $(".mySwipercenter .swiper-slide:not(.swiper-slide-active) img");
+          var i;
+          for (i = 0; i < others.length; i++) {
+            var srcs = others[i].getAttribute("src");
+
+            if(srcs.indexOf("rev") !=-1){
+              var lastSlashs = parseInt(srcs.lastIndexOf("/"));
+              var thenames = srcs.substr(lastSlashs);
+              var dotIndexs = parseInt(thenames.lastIndexOf("."));
+              var realnames =  String(thenames.substr(0,dotIndexs));
+              var revIndexs = realnames.indexOf("-rev");
+              var newnames  = String(realnames.substr(0,revIndexs))+".png";
+              var srcss = String(srcs.substr(0, lastSlashs))+String(newnames);
+              others[i].setAttribute("src",srcss);
+            }
+     
+          }
+        });
+        $("#top-product-15").on("click",function(){
+          var headerHight =$("header").prop("scrollHeight");
+          console.log("mahallo");
+          $(".swiper-slide-prev").removeClass("swiper-slide-prev");
+          $(".swiper-slide-active").addClass("swiper-slide-prev");
+          $(".swiper-slide-active").removeClass("swiper-slide-active");
+          $("#slide-for-top-15").addClass("swiper-slide-active");
+          var firstPosition15 = parseInt(parseInt($("#esperso-milk"+15).position().top)-parseInt(headerHight));
+          //console.log(firstPosition13);
+          $('html, body').animate({
+            
+              scrollTop: firstPosition15
+          }, 20);
+          console.log("change logo");
+          var activeImagSrc = String($("#slide-for-top-15 img").attr("src"));
+          var lastSlash = parseInt(activeImagSrc.lastIndexOf("/"));
+          var thename = activeImagSrc.substr(lastSlash);
+          var dotIndex = parseInt(thename.lastIndexOf("."));
+          if(thename.indexOf("rev")==-1){
+             var newname = String(thename.substr(0,dotIndex))+"-rev.png";
+             var src = String(activeImagSrc.substr(0, lastSlash))+String(newname);
+             $(".mySwipercenter .swiper-slide-active img").attr("src",src);
+          }
+          var others = $(".mySwipercenter .swiper-slide:not(.swiper-slide-active) img");
+          var i;
+          for (i = 0; i < others.length; i++) {
+            var srcs = others[i].getAttribute("src");
+
+            if(srcs.indexOf("rev") !=-1){
+              var lastSlashs = parseInt(srcs.lastIndexOf("/"));
+              var thenames = srcs.substr(lastSlashs);
+              var dotIndexs = parseInt(thenames.lastIndexOf("."));
+              var realnames =  String(thenames.substr(0,dotIndexs));
+              var revIndexs = realnames.indexOf("-rev");
+              var newnames  = String(realnames.substr(0,revIndexs))+".png";
+              var srcss = String(srcs.substr(0, lastSlashs))+String(newnames);
+              others[i].setAttribute("src",srcss);
+            }
+     
+          }
+        });
+        $("#top-product-16").on("click",function(){
+          var headerHight =$("header").prop("scrollHeight");
+          console.log("mahallo");
+          $(".swiper-slide-prev").removeClass("swiper-slide-prev");
+          $(".swiper-slide-active").addClass("swiper-slide-prev");
+          $(".swiper-slide-active").removeClass("swiper-slide-active");
+          $("#slide-for-top-16").addClass("swiper-slide-active");
+          var firstPosition16 = parseInt(parseInt($("#esperso-milk"+16).position().top)-parseInt(headerHight));
+          //console.log(firstPosition13);
+          $('html, body').animate({
+            
+              scrollTop: firstPosition16
+          }, 20);
+          console.log("change logo");
+          var activeImagSrc = String($("#slide-for-top-16 img").attr("src"));
+          var lastSlash = parseInt(activeImagSrc.lastIndexOf("/"));
+          var thename = activeImagSrc.substr(lastSlash);
+          var dotIndex = parseInt(thename.lastIndexOf("."));
+          if(thename.indexOf("rev")==-1){
+             var newname = String(thename.substr(0,dotIndex))+"-rev.png";
+             var src = String(activeImagSrc.substr(0, lastSlash))+String(newname);
+             $(".mySwipercenter .swiper-slide-active img").attr("src",src);
+          }
+          var others = $(".mySwipercenter .swiper-slide:not(.swiper-slide-active) img");
+          var i;
+          for (i = 0; i < others.length; i++) {
+            var srcs = others[i].getAttribute("src");
+
+            if(srcs.indexOf("rev") !=-1){
+              var lastSlashs = parseInt(srcs.lastIndexOf("/"));
+              var thenames = srcs.substr(lastSlashs);
+              var dotIndexs = parseInt(thenames.lastIndexOf("."));
+              var realnames =  String(thenames.substr(0,dotIndexs));
+              var revIndexs = realnames.indexOf("-rev");
+              var newnames  = String(realnames.substr(0,revIndexs))+".png";
+              var srcss = String(srcs.substr(0, lastSlashs))+String(newnames);
+              others[i].setAttribute("src",srcss);
             }
      
           }
@@ -376,9 +876,10 @@ $(function(){
           /* Read more about isConfirmed, isDenied below */
           // order continue
           if (result.isConfirmed) {
-            //console.log('isConfirmed');
+            // console.log('isConfirmed');
             // basket isnt empty
             if (typeof  window.newData !== 'undefined') {
+
               //console.log('newData =undefined');
               newData = window.newData;
               if(newData.product_id !== product_id){
@@ -404,11 +905,55 @@ $(function(){
                         } 
                     }, 
                 }); 
+                if($("footer #headChef").hasClass("d-none")){
+                  console.log($("body #headChef:first-child>.cart-number-container>span").text());
+
+                   let  baskets = parseInt($("#headChef:first-child>.cart-number-container>span:first-child").text());
+                  baskets++;
+                  $("#headChef>.cart-number-container>span:first-child").text(baskets);
+                  }
+                  else{
+                    console.log($("footer #headChef>.cart-number-container>span").text());
+
+                    let  baskets = parseInt($("footer #headChef>.cart-number-container>span:first-child").text());
+                  baskets++;
+                  $("footer #headChef>.cart-number-container>span:first-child").text(baskets);
+                }
+              }else{
+                // alert($("body #headChef:first-child").html());
+                if($("footer #headChef").hasClass("d-none")){
+                      console.log($("body #headChef:first-child>.cart-number-container>span").text());
+
+                       let  baskets = parseInt($("#headChef:first-child>.cart-number-container>span:first-child").text());
+                      baskets++;
+                      $("#headChef>.cart-number-container>span:first-child").text(baskets);
+                }
+                else{
+                  console.log($("footer #headChef>.cart-number-container>span").text());
+
+                  let  baskets = parseInt($("footer #headChef>.cart-number-container>span:first-child").text());
+                baskets++;
+                $("footer #headChef>.cart-number-container>span:first-child").text(baskets);
+              }
               }
               // basket is empty
             }else{
+              
+              console.log($("body #headChef:first-child>.cart-number-container>span").text());
+
               // we dont do eny thing till order be complite
               //console.log("basket is empty");
+              if($("footer #headChef").hasClass("d-none")){
+                let basket = parseInt($("#headChef:first-child>.cart-number-container>span:first-child").text());
+                basket++;
+                $("#headChef .cart-number-container span").text(basket);
+              }else{
+                console.log($("footer #headChef>.cart-number-container>span").text());
+
+                let  baskets = parseInt($("footer #headChef>.cart-number-container>span:first-child").text());
+                baskets++;
+                 $("footer #headChef>.cart-number-container>span:first-child").text(baskets);
+            }
 
             }
             window.newData  = data;
@@ -767,8 +1312,64 @@ $(function(){
               }, 20);            
           $("#all-pruduct-cat").addClass("d-none");
       });
+      $("#cat-number-13").on("click",function(){
+        var headerHight =$("header").prop("scrollHeight");
+        //console.log("click");
+             var myVar;
+              myVar = 'esperso-milk'+13;            
+              var element = document.getElementById(myVar);
+              var firstPosition2 = parseInt(parseInt(element.offsetTop)-parseInt(headerHight));
+              //console.log(element.offsetTop);
+              //console.log(firstPosition2);
+              $('html, body').animate({
+                  scrollTop: firstPosition2
+              }, 20);            
+          $("#all-pruduct-cat").addClass("d-none");
+      });
+      $("#cat-number-14").on("click",function(){
+        var headerHight =$("header").prop("scrollHeight");
+        //console.log("click");
+             var myVar;
+              myVar = 'esperso-milk'+14;            
+              var element = document.getElementById(myVar);
+              var firstPosition2 = parseInt(parseInt(element.offsetTop)-parseInt(headerHight));
+              //console.log(element.offsetTop);
+              //console.log(firstPosition2);
+              $('html, body').animate({
+                  scrollTop: firstPosition2
+              }, 20);            
+          $("#all-pruduct-cat").addClass("d-none");
+      });
+      $("#cat-number-15").on("click",function(){
+        var headerHight =$("header").prop("scrollHeight");
+        //console.log("click");
+             var myVar;
+              myVar = 'esperso-milk'+15;            
+              var element = document.getElementById(myVar);
+              var firstPosition2 = parseInt(parseInt(element.offsetTop)-parseInt(headerHight));
+              //console.log(element.offsetTop);
+              //console.log(firstPosition2);
+              $('html, body').animate({
+                  scrollTop: firstPosition2
+              }, 20);            
+          $("#all-pruduct-cat").addClass("d-none");
+      });
+      $("#cat-number-16").on("click",function(){
+        var headerHight =$("header").prop("scrollHeight");
+        //console.log("click");
+             var myVar;
+              myVar = 'esperso-milk'+16;            
+              var element = document.getElementById(myVar);
+              var firstPosition2 = parseInt(parseInt(element.offsetTop)-parseInt(headerHight));
+              //console.log(element.offsetTop);
+              //console.log(firstPosition2);
+              $('html, body').animate({
+                  scrollTop: firstPosition2
+              }, 20);            
+          $("#all-pruduct-cat").addClass("d-none");
+      });
 
-$("#cat-icon").on("click",function(){
+$("#cat-icon ul li:first-child").on("click",function(){
   $("#all-pruduct-cat").removeClass("d-none");
 });
 });

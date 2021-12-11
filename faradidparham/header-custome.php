@@ -1,3 +1,9 @@
+<?php
+wp_cache_flush();
+define('WP_CACHE', false)
+
+
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -48,7 +54,7 @@
     <header class="sec-bg-color">
         <section class="superheader px-3">
             <section id="menu">
-                <div class="d-block d-md-none mobileMenu">
+                <div class="d-block d-xl-none mobileMenu">
                     <ul>
                         <li>
                         <div class="row cf">
@@ -63,7 +69,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="d-none d-md-flex justify-content-between align-items-center desktop">
+                <div class="d-none d-xl-flex justify-content-between align-items-center desktop">
                     <?php
                         $args = array(
                                 'theme_location' => 'primary',
@@ -91,10 +97,10 @@
                     ?>
                 </div>
             </section>
-            <h1 class="text-center m-auto iransance">
+            <h1 class="text-center m-auto iransance d-block d-sm-block d-lg-none">
                <?= get_the_title() ?>
             </h1>
-            <section id="cat-icon" class="d-block d-md-none mobileMenu  cursor-pointer">
+            <section id="cat-icon" class="d-block d-xl-none mobileMenu  cursor-pointer">
                 <ul>
                     <li>
                  <img src="http://cafezeitoon.ir/wp-content/themes/faradidparham/assets/images/menu.png" alt="menu-cat">           
@@ -115,19 +121,20 @@
                             'taxonomy' => 'product_cat',
                             // 'orderby' => 'name',
                             // 'order' => 'ASC',
-                            'hide_empty' => true
+                            'hide_empty' => false
                         );
                         $categorizes = get_categories($args);
                         // die(var_dump($categorizes[0]->name));
                         // die(var_dump($categorizes[0]->term_id));
+                        $id = 1;
                         foreach( get_categories($args) as $category ){
                             $termId = $category->term_id ; 
                             $thumbnail_id = get_term_meta( $termId, 'thumbnail_id', true ); 
                             $image = wp_get_attachment_url( $thumbnail_id );                         
                            
                     ?>
-                    <div class="swiper-slide">
-                        <div class="product-cat-container">
+                    <div class="swiper-slide" id="slide-for-top-<?=$id?>">
+                        <div class="product-cat-container" id="top-product-<?=$id?>">
                             <p class="product-icon">
                                 <img src="<?=$image?>" alt="<?= $category->name; ?>">
                             </p>
@@ -137,6 +144,7 @@
                         </div>
                     </div>
                     <?php
+                    $id++;
                         }
                         wp_reset_postdata();
                     ?>
