@@ -834,6 +834,7 @@ $(function(){
         });
 
       // plus minus btn 
+      
       var itemInBasket =  $(".add-remove-basket-main input");
        $(".add-remove-basket-main input").on("change",function (){
             // alert($(this).val());
